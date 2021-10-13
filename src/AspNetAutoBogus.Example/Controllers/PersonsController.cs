@@ -29,6 +29,7 @@ namespace AspNetAutoBogus.Example.Controllers
 
       [HttpGet("person")]
       [ProducesResponseType(typeof(List<Person>), 200)]
+      [ProducesResponseType(404)]
       public IActionResult GetPersons()
       {
          return Ok(new Person[0]);

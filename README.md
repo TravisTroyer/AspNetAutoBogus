@@ -32,7 +32,20 @@ public async Task<IReadOnlyList<Response>> GetAsync() { }
 public async Task<ActionResult> PostAsync([FromBody]Body body) { }
 ```
 
-Or let the AutoBogusFilter work things out for you.  Assuming neither AutoBogus attribute is found, AutoBogusFilter picks the first parameter decorated with a **FromBody** attribute, falling back to the return type.
+Allow AutoBogusFilter work using the _ProducesResponseType_ attribute.
+
+```c#
+[ProducesResponseType(typeof(Response), 200)]
+public async Task<Response> GetAsync() { }
+
+[ProducesResponseType(typeof(Response), 200)]
+public async Task<IReadOnlyList<Response>> GetAsync() { }
+
+[ProducesResponseType(typeof(Body), 200)]
+public async Task<ActionResult> PostAsync([FromBody]Body body) { }
+```
+
+Or let the AutoBogusFilter work things out for you.  Assuming neither AutoBogus attribute or the ProducesResponseType attribute is found, AutoBogusFilter picks the first parameter decorated with a **FromBody** attribute, falling back to the return type.
 
 ```c#
 // AutoBogusFilter boguses up a Response
