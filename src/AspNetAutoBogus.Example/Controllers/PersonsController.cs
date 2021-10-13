@@ -19,5 +19,19 @@ namespace AspNetAutoBogus.Example.Controllers
       {
          return NotFound();
       }
+
+      [HttpGet("person/{id}")]
+      [ProducesResponseType(typeof(Person), 200)]
+      public IActionResult GetPerson(int id)
+      {
+         return NotFound();
+      }
+
+      [HttpGet("person")]
+      [ProducesResponseType(typeof(List<Person>), 200)]
+      public IActionResult GetPersons()
+      {
+         return Ok(new Person[0]);
+      }
    }
 }
