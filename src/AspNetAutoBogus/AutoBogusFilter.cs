@@ -22,6 +22,7 @@ namespace AspNetAutoBogus
 
          if (!TrySample<FromAttributeSampler>(action, out var sample)
              && !TrySample<FromListAttributeSampler>(action, out sample)
+             && !TrySample<FromProducesResponseTypeSampler>(action, out sample)
              && !TrySample<FromMethodInfoSampler>(action, out sample))
             return;
 

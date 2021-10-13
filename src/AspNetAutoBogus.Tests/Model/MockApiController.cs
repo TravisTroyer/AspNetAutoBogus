@@ -43,5 +43,17 @@ namespace AspNetAutoBogus.Tests.Model
       [AutoBogus(typeof(Body))]
       [AutoBogusList(typeof(Body))]
       public Task<IReadOnlyList<Response>> DecoratedTaskListRequest(Body _) => null;
+      
+      [ProducesResponseType(typeof(Response), 200)]
+      public Task<IActionResult> ResponseTypeTaskResponse(Body _) => null;
+      
+      [ProducesResponseType(typeof(List<Response>), 200)]
+      public Task<IActionResult> ResponseTypeTaskListResponse(Body _) => null;
+      
+      [ProducesResponseType(typeof(Response), 200)]
+      public IActionResult ResponseTypeResponse(Body _) => null;
+      
+      [ProducesResponseType(typeof(List<Response>), 200)]
+      public IActionResult ResponseTypeListResponse(Body _) => null;
    }
 }
